@@ -2,53 +2,42 @@
 
 **Data Cleaning and Analysis in R - README**
 
-This repository contains the R code and cleaned dataset for the data cleaning and analysis project. The project focuses on cleaning and analyzing sales data related to vast amounts of agricultural land in less developed countries, obtained from the GRAIN organization. The data is provided in an Excel file, with two sheets in the workbook.
+This README document provides an overview of the data cleaning and analysis process for the survey dataset on attitudes towards mental health and frequency of mental health disorders in the tech workplace. The dataset is sourced from a 2014 survey.
 
-**Project Overview**
+**Files**
+survey.xlsx: The Excel file containing the survey data. It consists of two sheets.
+data_cleaning.R: The R script used for data cleaning and preparation.
+data_analysis.R: The R script used for data analysis and visualization.
+cleaned_survey_data.csv: The cleaned dataset saved in CSV format.
 
-The main objective of this project is to retrieve, load, and clean the data using R, ensuring it is ready for analysis. The data may contain errors in formatting, spelling, missing values, data types, outliers, etc. The project involves the following tasks:
+**Data Cleaning**
+File Reading: The survey.xlsx file is read using the appropriate R package (e.g., readxl or openxlsx).
+Handling Missing Values: Missing values are identified and handled appropriately, either by imputation or exclusion, based on the specific context and variables.
+Spelling Errors: Spelling errors in text columns are identified and corrected using manual or automated methods, such as string matching or approximate string matching algorithms.
+Data Type Conversion: Columns with incorrect data types are converted to their appropriate types, such as converting dates to DateTime objects, converting strings to factors, or converting numeric values to integers.
+Outliers: Outliers are identified and handled based on domain knowledge and the specific requirements of the analysis. Outliers may be removed, winsorized, or treated using other appropriate methods.
+Data Transformation: If necessary, data transformation techniques like scaling, normalization, or log transformations are applied to improve data distribution or meet modeling assumptions.
+Data Integrity Checks: Data integrity is ensured by checking for any inconsistencies, duplication, or illogical values. Inconsistencies are resolved by validating and verifying the data against known rules or external sources.
+Saving Cleaned Data: The cleaned dataset is saved in a separate file, cleaned_survey_data.csv, in a widely compatible format like CSV, which can be used for further analysis.
 
-1. Retrieve and load the data from the Excel file.
-2. Combine the data from both sheets into one dataset.
-3. Perform data cleaning, including handling missing values, correcting errors, converting data types, and removing outliers.
-4. Create visualizations (histograms, boxplots, graphs, etc.) for at least two variables to aid in the identification of errors and data exploration.
-5. Save the cleaned dataset as a new Excel file.
+**Data Analysis**
 
+Combining Data: If multiple data files are available, they are combined into one dataset to facilitate analysis.
+Descriptive Analysis: Descriptive statistics, such as measures of central tendency, variability, and frequency distributions, are computed to summarize the dataset.
+Visualization: Visualizations, such as histograms, boxplots, or graphs, are created to gain insights into the distribution, relationships, and patterns within the variables.
+Statistical Analysis: Statistical techniques, such as hypothesis testing, regression analysis, or clustering, are applied to explore relationships, identify significant factors, or draw conclusions based on the research questions or objectives.
+Interpretation and Reporting: The findings from the analysis are interpreted and summarized in a clear and concise manner, accompanied by appropriate visualizations, tables, or charts. Conclusions are drawn and any limitations or assumptions are mentioned.
 
-**Getting Started**
+**Dependencies**
+The following R packages were used in the data cleaning and analysis process:
 
-To replicate the data cleaning and analysis process, follow these steps:
+readxl: For reading Excel files.
+openxlsx: For reading and manipulating Excel files.
+Other packages as required for specific cleaning, analysis, and visualization tasks.
+Ensure that these packages are installed to execute the provided scripts.
 
-1. Ensure you have R and the required packages installed, including readxl and tidyverse, using the following commands:
-
-install.packages("readxl")
-install.packages("tidyverse")
-
-2. Clone or download the repository to your local machine.
-3. Open the R script file (data_cleaning_analysis.R) in your preferred R editor or IDE.
-4. Set the appropriate file path for the Excel dataset (GRAIN---Land-grab-deals---Jan-2012-2.xlsx) in the R script.
-5. Run the R script, which will perform the data cleaning and analysis steps outlined above.
-6. Once the script finishes executing, the cleaned dataset will be saved as a new Excel file (cleaned_data.xlsx) in the specified directory.
-7. You can explore the visualizations generated by the script and analyze the cleaned dataset for further insights.
-
-**Repository Structure**
-
-The repository includes the following files:
-
-**data_cleaning_analysis.R**: The R script containing the code for data cleaning and analysis.
-**GRAIN---Land-grab-deals---Jan-2012-2.xlsx:** The original Excel dataset with two sheets.
-**cleaned_data.xlsx:** The cleaned dataset is saved as an Excel file.
-**README.md:** The ReadMe file provides an overview of the project and instructions.
-
-**Notes and Considerations**
-
-Make sure to adjust the file paths in the R script to match the location of the Excel dataset on your machine.
-The data cleaning process may require customization based on the specific errors and anomalies present in the dataset.
-Justifications for handling missing data, outliers, errors, and other issues can be found in the code comments throughout the R script.
-
-Please feel free to reach out if you have any questions or require further assistance with the data cleaning and analysis process.
-
-
-
-
-
+**Usage**
+Download the survey.xlsx file and place it in the appropriate directory.
+Execute the data_cleaning.R script to clean the data and save the cleaned dataset.
+Execute the data_analysis.R script to perform the analysis and generate visualizations.
+Refer to the output and generated files for the cleaned dataset, analysis results, and visualizations.

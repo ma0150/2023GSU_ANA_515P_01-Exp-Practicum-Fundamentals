@@ -1,0 +1,96 @@
+---
+title: "Practicum Fundamentals"
+author: "Abdul Moid"
+date: "2023-06-24"
+output: html_document
+---
+
+```{r code, echo=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load required libraries
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(openxlsx)
+
+# Read the Excel file using read.xlsx()
+survey_data <- read.xlsx("C:/Users/mfhus/Downloads/survey.xlsx", sheet = 1, detectDates = TRUE)
+
+# Convert columns to appropriate types
+survey_data$Timestamp <- as.POSIXct(survey_data$Timestamp)  # Convert to datetime
+survey_data$Age <- as.integer(survey_data$Age)  # Convert to integer
+survey_data$Gender <- as.factor(survey_data$Gender)  # Convert to factor
+
+# Examine the structure of the dataset
+str(survey_data)
+
+# Summary statistics of the dataset
+summary(survey_data)
+
+# 1.1 Missing Values
+
+# Check for missing values
+colSums(is.na(survey_data))
+
+# Remove rows with missing values
+survey_data <- survey_data %>% na.omit()
+
+
+# 1.2 Incorrect Data Types
+
+# Check data types of variables
+str(survey_data)
+
+# Convert variables to appropriate data types
+survey_data$Timestamp <- as.POSIXct(survey_data$Timestamp)  # Convert to datetime
+survey_data$Age <- as.integer(survey_data$Age)  # Convert to integer
+survey_data$Gender <- as.factor(survey_data$Gender)  # Convert to factor
+survey_data$Country <- as.factor(survey_data$Country)  # Convert to factor
+
+# Check data types after conversion
+str(survey_data)
+
+
+# 1.3 Spelling Errors
+
+# Identify unique values and correct any spelling errors
+unique(survey_data$Gender)
+
+# Correct spelling errors
+survey_data$Gender <- recode(survey_data$Gender, "F" = "Female", "M" = "Male")
+
+# Check unique values again after correction
+unique(survey_data$Gender)
+
+
+```{r code2, echo=TRUE}
+
+# 2. Combining Data Files
+
+# Read the second sheet from the Excel file
+survey_data_2 <- read_excel("C:/Users/mfhus/Downloads/survey.xlsx", sheet = 2)
+
+# Combine the two datasets
+combined_data <- bind_rows(survey_data, survey_data_2)
+
+
+```{r code3, echo=TRUE}
+
+# 3. Visualizations
+
+# Histogram of Age variable
+ggplot(combined_data, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(x = "Age", y = "Count", title = "Distribution of Age")
+
+# Boxplot of Country variable
+ggplot(combined_data, aes(x = "Age", y = Country)) +
+  geom_boxplot(fill = "lightgreen", color = "black") +
+  labs(x = "Age", y = "Country", title = "Boxplot of Country")
+
+
+
+
+
+
